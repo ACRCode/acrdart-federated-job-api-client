@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>American College of Radiology</Authors>
+    <Company>American College of Radiology</Company>
+    <Product>Acr.Dart.FederatedNetwork.Api.Client</Product>
+    <Description>Client libraries for AI Lab Dart Api integration.</Description>
+    <Copyright>Copyright © American College of Radiology 2023-2024</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0.0</Version>
+    <LangVersion>9.0</LangVersion>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+	<PackageReference Include="AcrConnect.Framework.Api.Client" Version="1.0.0.15" />
+	  
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\acrdart-federated-job-api-contract\src\Acr.Dart.FederatedNetwork.Api.Contract\Acr.Dart.FederatedNetwork.Api.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

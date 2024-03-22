@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Acr.Dart.FederatedNetwork.Api.Client": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
