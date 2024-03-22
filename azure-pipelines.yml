@@ -1,0 +1,26 @@
+trigger :
+    - 'release/*'
+#checkout multiple repositories in the pipeline
+resources :
+  repositories :
+  #1) this repository contains ADOCS share templates https://github.com/ACRCode/ADOCS-templates
+  #Required
+  - repository : azureSharedTemplates
+    type : github
+    endpoint : ACRCode
+    name : ACRCode/ADOCS-templates
+    branch : master
+
+#ADOCS requires pipeline yaml file extending from shared template created by ADOCS team
+# You should provide parameters defined in shared template (shared-template.yml) as shown below
+extends :
+  template : project-examples/connect-lib-template.yml@azureSharedTemplates
+  # Below are parameters needed for shared template
+  parameters :
+    #Required
+    pathToProject: 'src/Acr.Dart.FederatedNetwork.Api.Client/*.csproj'
+    appName: '$(Build.Repository.Name)'
+    CheckmarxProject: '$(Build.Repository.Name)'
+    NexusAppId: '$(Build.Repository.Name)'
+    NexusScanTarget: '$(Build.SourcesDirectory)/Nexus/**/*.zip'
+    CheckmarxFullTeamName: "CxServer\\SOC\\ACR\\All\\Dev\\AI LAB"

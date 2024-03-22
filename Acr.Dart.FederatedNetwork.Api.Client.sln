@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acr.Dart.FederatedNetwork.Api.Client", "src\Acr.Dart.FederatedNetwork.Api.Client\Acr.Dart.FederatedNetwork.Api.Client.csproj", "{056C782C-9851-48BD-991F-73F73E815AD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acr.Dart.FederatedNetwork.Api.Contract", "..\acrdart-federated-job-api-contract\src\Acr.Dart.FederatedNetwork.Api.Contract\Acr.Dart.FederatedNetwork.Api.Contract.csproj", "{903000D9-C34A-4859-921A-57E3F6EB052B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{056C782C-9851-48BD-991F-73F73E815AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056C782C-9851-48BD-991F-73F73E815AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056C782C-9851-48BD-991F-73F73E815AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056C782C-9851-48BD-991F-73F73E815AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903000D9-C34A-4859-921A-57E3F6EB052B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903000D9-C34A-4859-921A-57E3F6EB052B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903000D9-C34A-4859-921A-57E3F6EB052B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903000D9-C34A-4859-921A-57E3F6EB052B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14AB4749-F60D-4E62-8F81-2615AC276077}
+	EndGlobalSection
+EndGlobal
