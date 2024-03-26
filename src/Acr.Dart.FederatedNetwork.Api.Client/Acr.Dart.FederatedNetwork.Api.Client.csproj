@@ -24,12 +24,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
 	<PackageReference Include="AcrConnect.Framework.Api.Client" Version="1.0.0.15" />
-	  
-    
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\acrdart-federated-job-api-contract\src\Acr.Dart.FederatedNetwork.Api.Contract\Acr.Dart.FederatedNetwork.Api.Contract.csproj" />
+	<PackageReference Include="Acr.Dart.FederatedNetwork.Api.Contract" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
