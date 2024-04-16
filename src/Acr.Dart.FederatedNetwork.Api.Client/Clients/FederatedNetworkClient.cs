@@ -125,8 +125,12 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
 
             HttpContent outputContent = new StreamContent(outputStream);
             outputContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data") { FileName = "output.zip", Name = "outputFile" };
+            var formData = new MultipartFormDataContent
+            {
+                outputContent
+            };
 
-            var response = await Client.PostAsync(CreateUri(apiURL), outputContent, cancellationToken).ConfigureAwait(false);
+            var response = await Client.PostAsync(CreateUri(apiURL), formData, cancellationToken).ConfigureAwait(false);
             outputContent.Dispose();
             await EnsureSuccessfulRequest(response).ConfigureAwait(false);
         }

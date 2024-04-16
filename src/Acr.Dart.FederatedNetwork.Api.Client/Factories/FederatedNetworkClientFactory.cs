@@ -28,7 +28,6 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Factories
 
         [NotNull] private readonly IHttpClientFactory _httpClientFactory;
         [NotNull] private readonly IFederatedNetworkUriResolver _uriResolver;
-        [NotNull] private readonly IMemoryCache _memoryCache;
 
         #endregion Fields
 
@@ -40,7 +39,6 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Factories
         /// <param name="httpClientFactory"><see cref="IHttpClientFactory"/> instance to create underlying <see cref="HttpClient"/> instances.</param>
         /// <param name="uriResolver"><see cref="IFederatedNetworkUriResolver"/> instance to resolve Dart API base URI.</param>
         public FederatedNetworkClientFactory([NotNull] IHttpClientFactory httpClientFactory,
-            [NotNull] IMemoryCache memoryCache,
             [NotNull] IFederatedNetworkUriResolver uriResolver)
         {
             Assert.NotNull(httpClientFactory, nameof(httpClientFactory));
@@ -48,7 +46,6 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Factories
 
             _httpClientFactory = httpClientFactory;
             _uriResolver = uriResolver;
-            _memoryCache = memoryCache;
         }
 
         #endregion Constructors
@@ -61,7 +58,7 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Factories
             var uri = await _uriResolver.GetFederatedNetworkUriAsync(cancellationToken).ConfigureAwait(false);
             var client = _httpClientFactory.CreateClient(HttpClientName);
             client.BaseAddress = uri;
-            object[] constParams = { client, _memoryCache };
+            object[] constParams = { client };
             var obj = Activator.CreateInstance(typeof(TClientType), constParams);
             return (TClientType)obj;
         }
