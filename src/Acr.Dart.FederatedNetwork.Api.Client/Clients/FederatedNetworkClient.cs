@@ -29,9 +29,9 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
         /// </summary>
         /// <param name="cancellationToken">Token to track request cancellation</param>
         /// <returns>The array of all federatedJobs</returns>
-        public async Task<IEnumerable<FederatedJob>> GetFederatedJobsForSite(string siteId, string authToken, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<FederatedJob>> GetFederatedJobsForSite(string nodeId, string authToken, CancellationToken cancellationToken = default)
         {
-            string apiURL = $"api/federatedjobs?siteid={siteId}";
+            string apiURL = $"api/federatedjobs?nodeId={nodeId}";
             var results = await GetAsync<IEnumerable<FederatedJob>>(apiURL, authToken, cancellationToken).ConfigureAwait(false);
             return results;
         }
