@@ -1,11 +1,15 @@
 ﻿using Acr.Dart.FederatedNetwork.Api.Contract;
 using Acr.Dart.FederatedNetwork.Api.Contract.Enums;
+using AcrConnect.Framework.Api.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -76,7 +80,13 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
             string apiURL = $"api/federatedjobs/{transactionId}/status";
             if (!string.IsNullOrEmpty(authToken))
                 await AuthorizeClient(authToken).ConfigureAwait(false);
-            var response = await Client.PostAsJsonAsync(CreateUri(apiURL), status, cancellationToken).ConfigureAwait(false);
+
+            //DART will only recognize string content for the body. Any other method won't work
+            using StringContent jsonContent = new(
+                JsonConvert.SerializeObject((int)status),
+                Encoding.UTF8,
+                "application/json");
+            var response = await Client.PostAsync(CreateUri(apiURL), jsonContent, cancellationToken).ConfigureAwait(false);
             await EnsureSuccessfulRequest(response).ConfigureAwait(false);
         }
 
@@ -98,7 +108,14 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
             string apiURL = $"api/federatedjobs/{transactionId}/logs";
             if (!string.IsNullOrEmpty(authToken))
                 await AuthorizeClient(authToken).ConfigureAwait(false);
-            var response = await Client.PostAsJsonAsync(CreateUri(apiURL), logs, cancellationToken).ConfigureAwait(false);
+
+            using StringContent jsonContent = new(
+                $"{logs}",
+                Encoding.UTF8,
+                "application/json");
+
+            var response = await Client.PostAsync(CreateUri(apiURL), jsonContent, cancellationToken).ConfigureAwait(false);
+            //var response2 = await Client.PostAsJsonAsync(CreateUri(apiURL), logs);
             await EnsureSuccessfulRequest(response).ConfigureAwait(false);
         }
 
