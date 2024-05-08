@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acr.Dart.FederatedNetwork.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acr.Dart.FederatedNetwork.Api.Contract", "..\acrdart-federated-job-api-contract\src\Acr.Dart.FederatedNetwork.Api.Contract\Acr.Dart.FederatedNetwork.Api.Contract.csproj", "{903000D9-C34A-4859-921A-57E3F6EB052B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acr.Dart.FederatedNetwork.Api.Client.Tests", "tests\Acr.Dart.FederatedNetwork.Api.Client.Tests\Acr.Dart.FederatedNetwork.Api.Client.Tests.csproj", "{88C5B192-BD77-450E-8490-85527E4CEC4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{903000D9-C34A-4859-921A-57E3F6EB052B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{903000D9-C34A-4859-921A-57E3F6EB052B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903000D9-C34A-4859-921A-57E3F6EB052B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C5B192-BD77-450E-8490-85527E4CEC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C5B192-BD77-450E-8490-85527E4CEC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C5B192-BD77-450E-8490-85527E4CEC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C5B192-BD77-450E-8490-85527E4CEC4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
