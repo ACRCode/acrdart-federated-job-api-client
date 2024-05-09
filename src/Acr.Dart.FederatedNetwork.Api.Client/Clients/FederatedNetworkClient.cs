@@ -109,7 +109,7 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
             if (!string.IsNullOrEmpty(authToken))
                 await AuthorizeClient(authToken).ConfigureAwait(false);
 
-            var content = new StringContent(logs, null, "application/json");
+            using var content = new StringContent(JsonConvert.SerializeObject(logs), Encoding.UTF8, "application/json");
             var response = await Client.PostAsync(CreateUri(apiURL), content, cancellationToken).ConfigureAwait(false);
             await EnsureSuccessfulRequest(response).ConfigureAwait(false);
         }
