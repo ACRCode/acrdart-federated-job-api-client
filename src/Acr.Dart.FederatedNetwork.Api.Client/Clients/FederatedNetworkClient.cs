@@ -82,7 +82,7 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
                 await AuthorizeClient(authToken).ConfigureAwait(false);
 
             //DART will only recognize string content for the body. Any other method won't work
-            var jsonContent = new StringContent(
+            using StringContent jsonContent = new(
                 JsonConvert.SerializeObject((int)status),
                 Encoding.UTF8,
                 "application/json");
@@ -109,8 +109,13 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
             if (!string.IsNullOrEmpty(authToken))
                 await AuthorizeClient(authToken).ConfigureAwait(false);
 
-            var content = new StringContent(logs, null, "application/json");
-            var response = await Client.PostAsync(CreateUri(apiURL), content, cancellationToken).ConfigureAwait(false);
+            using StringContent jsonContent = new(
+                $"{logs}",
+                Encoding.UTF8,
+                "application/json");
+
+            var response = await Client.PostAsync(CreateUri(apiURL), jsonContent, cancellationToken).ConfigureAwait(false);
+            //var response2 = await Client.PostAsJsonAsync(CreateUri(apiURL), logs);
             await EnsureSuccessfulRequest(response).ConfigureAwait(false);
         }
 
