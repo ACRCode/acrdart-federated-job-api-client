@@ -92,6 +92,34 @@ namespace Acr.Dart.FederatedNetwork.Api.Client.Clients
 
 
         /// <summary>
+        /// Updates the retrieved study count of a a federated job
+        /// </summary>
+        /// <param name="transactionId"></param>
+        /// <param name="retrievedStudyCount"></param>
+        /// <param name="authToken"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task UpdateRetrievedStudyCount(
+            Guid transactionId,
+            int retrievedStudyCount,
+            string authToken,
+            CancellationToken cancellationToken = default)
+        {
+            string apiURL = $"api/federatedjobs/{transactionId}/retrievedstudycount";
+            if (!string.IsNullOrEmpty(authToken))
+                await AuthorizeClient(authToken).ConfigureAwait(false);
+
+            //DART will only recognize string content for the body. Any other method won't work
+            var jsonContent = new StringContent(
+                JsonConvert.SerializeObject(retrievedStudyCount),
+                Encoding.UTF8,
+                "application/json");
+            var response = await Client.PostAsync(CreateUri(apiURL), jsonContent, cancellationToken).ConfigureAwait(false);
+            await EnsureSuccessfulRequest(response).ConfigureAwait(false);
+        }
+
+
+        /// <summary>
         /// Updates the logs of a a federated job
         /// </summary>
         /// <param name="transactionId"></param>
